@@ -1,0 +1,16 @@
+html{
+    scroll-behavior: smooth;
+}
+#about{
+    text-align: center;
+    font-weight: bold;
+    color:azure;
+}
+#contact{
+    text-align: center;
+    font-weight: bold;
+    color:azure;
+}
+p{
+    color: white!important;
+}

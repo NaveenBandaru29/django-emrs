@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block home %}home{% endblock home %}
+{% block title %}EMRS | Profile{% endblock title %}
+{% block path %} logout {% endblock path %}
+{% block login/logout %}Log Out{% endblock login/logout %}
+
+
+
+{% block content %}
+<h1 style="color:white;margin:70px 0 50px 0;text-align:center">Edit Profile</h1>
+    {% for message in messages%}
+    <center>
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" style="text-align:center;width:66%"role="alert">
+      {{message}}.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    </center>
+    {% endfor %}
+    <form action="" method="post" style="overflow:hidden">
+        {% csrf_token %}
+        <div class="mb-3 row">
+          <div class="col-2"></div>
+          <label for="name" class="col-sm-2 col-form-label" style="color:white">Name</label>
+          <div class="col-6">
+          <input type="text" class="form-control" name='name' id="name" value={{request.user|capfirst}} readonly >
+          </div>
+        </div>  
+
+        {% comment %} <div class="mb-3 row">
+          <div class="col-2"></div>
+          <label for="exampleInputEmail1" class="col-sm-2 col-form-label disabled" style="color:white">Email address</label>
+          <div class="col-6">
+          <input type="email" class="form-control" name='email1' id="email" value={{user.email}}>
+          </div>
+        </div> {% endcomment %}
+
+        {% comment %} <div class="mb-3 row">
+          <div class="col-2"></div>
+          <label for="phonenumber" class="col-sm-2 col-form-label" style="color:white">Phone</label>
+          <div class="col-6">
+          <input type="text" class="form-control" name="phonenumber" id="phonenumber"  maxlength="10">
+          </div>
+        </div> {% endcomment %}
+
+        <div class="mb-3 row">
+          <div class="col-2"></div>
+          <label for="language" class="col-sm-2 col-form-label" style="color:white">Language</label>
+          <div class="col-6">
+            <select class="form-select" name="language" aria-label="Default select example">
+                <option selected>{{pro.language}}</option>
+                <option value="Telugu">Telugu</option>
+                <option value="Hindi">Hindi</option>
+                <option value="English">English</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <div class="col-2"></div>
+          <label for="artist" class="col-sm-2 col-form-label" style="color:white">Artist</label>
+          <div class="col-6">
+            <select class="form-select" name="artist" aria-label="Default select example">
+                <option selected>{{pro.artist}}</option>
+                <option value="Sid SriRam">Sid SriRam</option>
+                <option value="Armaan Malik">Armaan Malik</option>
+                <option value="S.P.Balasubramanyam">S.P.Balasubramanyam</option>
+                <option value="Arjit Singh">Arjit Singh</option>
+                <option value="Justin Bieber">Justin Bieber</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <div class="col-2"></div>
+          <label for="musician" class="col-sm-2 col-form-label" style="color:white">Musician</label>
+          <div class="col-6">
+            <select class="form-select" name="musician">
+                <option selected>{{pro.musician}}</option>
+                <option value="Devi Sri Prasad">Devi Sri Prasad</option>
+                <option value="Thaman">Thaman</option>
+                <option value="A.R.Rahman">A.R.Rahman</option>
+                <option value="Amit Trivedi">Amit Trivedi</option>
+                <option value="John Williams">John Williams</option>
+              </select>
+          </div>
+        </div>
+        
+        <div class="mb-3 row">
+          <div class="col-5"></div>
+          <div class="col">
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+
+    </form>
+
+{% endblock content %}

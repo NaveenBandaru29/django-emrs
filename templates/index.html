@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} EMRS | Index {% endblock title %}
+{% block path %} login {% endblock path %}
+{% block login/logout %}Login{% endblock login/logout %}
+
+
+
+    <!--Home Carousel Section-->
+
+    {% block Carousel %}
+    
+    <div id="carouselExampleDark" class="carousel slide my-5" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="{%static "images/caro-1.jfif"%}" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="{%static "images/caro-2.png"%}" class="d-block w-100 me-5" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{%static "images/caro-3.jpg"%}" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    {% endblock Carousel %}
+    
+
+    <!--About Section-->
+
+    {% block About %}
+    <div class="container">
+      <center>
+        <h1 id="run">TRY IT</h1>
+        <h4>Show us your emotion.</h4>
+        <button class="btn btn-success px-4 my-4">
+          <a href="run" style="text-decoration:none;color:white;">
+            <img src="{% static 'images/camera_icon.png'%}" style="width:50px;" >
+            <span><b>Click me</b></span>
+          </a>
+        </button>
+        <h4> Click on the camera icon to detect your face and predict the emotion to recommend a songs playlist based on your current mood.</h4>
+      </center>
+    </div>
+    {% endblock About %}
+
+
+    <!--Contact Section-->
+
+    {% block Contact %}
+    {% for message in messages  %}
+    <center>
+      <div class="alert alert-{{message.tags}} alert-dismissible fade show my-5" style="text-align:center;width:66%" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </center>
+    {% endfor %}
+    <div class="container my-5" >
+      <h1 id="contact">CONTACT</h1>
+      <form action="contact"  method="post" >
+        {% csrf_token %}
+        <div class="mb-3 row">
+          <div class="col-2"></div>
+          <label for="name" class="col-sm-2 col-form-label" style="color:white">Name</label>
+          <div class="col-6" style="text-align: center;">
+          <input type="text" class="form-control" name='name' id="name" aria-describedby="emailHelp" required>
+          </div>
+        </div>  
+        <div class="mb-3 row">
+          <div class="col-2"></div>
+          <label for="exampleInputEmail1" class="col-sm-2 col-form-label" style="color:white">Email address</label>
+          <div class="col-6">
+          <input type="email" class="form-control" name='email1' id="email" aria-describedby="emailHelp" >
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <div class="col-2"></div>
+          <label for="exampleInputPassword1" class="col-sm-2 col-form-label" style="color:white">Phone</label>
+          <div class="col-6">
+          <input type="text" class="form-control" name="phonenumber" id="phonenumber"  maxlength="10" >
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <div class="col-2"></div>
+          <label for="description" class="col-sm-2 col-form-label" style="color:white">Tell us about you</label>
+          <div class="col-6">
+          <textarea class="form-control" name="description" id="description" rows="3" ></textarea>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          {% comment %} <div class="col-5"></div> {% endcomment %}
+          <div class="col">
+          <center><button type="submit" class="btn btn-primary px-3">Submit</button></center>
+        </div>
+      </div>
+
+      </form>
+    </div>
+    {% endblock Contact %}

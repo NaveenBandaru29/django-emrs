@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} EMRS | Home {% endblock title %}
+{% block home %}home{% endblock home %}
+{% block path %} logout {% endblock path %}
+
+{% block Profile %}
+<li class="nav-item px-4">
+  <a class="nav-link active" href="profile">PROFILE</a>
+</li>
+{% endblock Profile %}
+
+{% block login/logout %}Log Out{% endblock login/logout %}

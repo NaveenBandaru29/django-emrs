@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css"  href="{% static "css/bootstrap.min.css"%}"/>
+
+    <title>SignUp Page</title>
+  
+  </head>
+  <body style="background-color: rgba(5, 50, 80); color: aliceblue; margin-top: 30px;">
+    <div class="container mb-3" align="center">
+      <img
+        src="{% static 'images/musical-notes.png' %}"
+        style="width: 50px"
+        class="mb-3"
+        align="center"
+      />
+      <h1>Sign Up</h1>
+    </div>
+
+    <div class="container">
+      <form style="margin: 0% 10%" action="" method="post">
+        {% csrf_token %}
+
+        {% for message in messages  %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+
+        <div class="form-group py-2">
+          <label for="name" class="form-label">UserName<sup style="color: red">*</sup></label>
+          <input type="text" class="form-control" name="username" placeholder="Username">
+        </div>
+
+        <div class="mb-3">
+          <label for="email1" class="form-label">Email address<sup style="color: red">*</sup></label>
+          <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" required />
+          <div id="emailHelp" class="form-label">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+
+
+        <div class="mb-3">
+          <label for="Password1" class="form-label">Set Password<sup style="color: red">*</sup></label>
+          <input type="password" class="form-control" name="password1" id="Password1" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="Password1" class="form-label">Retype Password<sup style="color: red">*</sup></label>
+          <input type="password" class="form-control" name="password2" id="Password2" required />
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-primary my-3">Sign Up</button>
+          <p class="mb-3 my-3">
+            Already have an account?
+            <a href="login" style="text-decoration: none">Log In</a>
+          </p>
+        </div>
+      </form>
+    </div>
+
+        <!-- Popper and Bootstrap JS -->
+        <script src="{% static "js/bootstrap.bundle.min.js"%}"></script>
+        <script src="{% static "js/bootstrap.min.js"%}"></script>
+  </body>
+</html>

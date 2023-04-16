@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} EMRS | Run {% endblock title %}
+{% block home %} / {% endblock home %}
+{% block login/logout %} {{iio | capfirst}} {% endblock login/logout %}
+{% block path %}{{iio}}{% endblock path %}
+
+
+{% block Carousel %}
+<style>
+    .album{
+        background:#0096c7;
+
+        border-radius:20px;
+    }
+    .album-image img{
+        width:250px;
+    }
+    .col{
+        display:flex;
+        align-items:center;
+    }
+</style>
+
+<center><h1 class="my-5">Your emotion is {{emotion}}</h1>
+<h1>Are you satisfied with these recommendations!!</h1>
+<h3>Or you can try also
+    {% if emotion != "Neutral" %}
+    
+    <a href="onlyHappy" class="btn btn-outline-success px-4">Happy</a> or also
+    {% endif %}
+    <a href="onlySad" class="btn btn-outline-danger px-4">Sad</a>
+</h3>
+<h3>To try once more
+    <a href="run" class="btn btn-outline-info"> Click Me</a>
+</h3>
+</center>
+<div class="container" style="margin-top:70px">
+    {% for song in songs %}
+    <div class="row p-4 album my-5">
+
+        <div class="col-1"></div>
+        <div class="col-2 album-image">
+            <img src="media/{{song.image}}" alt="image"  style="float:left;padding-right:100px">
+        </div>
+        <div class="col-4">
+            <h4>Name : {{song.name}}</h4>
+            <h4>Singer : {{song.artist}}</h4>            
+            <h4>Language : {{song.language}}</h4>            
+            <h4>Emotion : {{song.emotion}}</h4>            
+
+        </div>
+        <div class="col song"> 
+            <audio controls>
+                <source src="media/{{song.song}}" type="audio/ogg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock Carousel %}
